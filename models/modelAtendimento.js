@@ -17,7 +17,6 @@ class modelAtendimento {
 
     criar(novoAtendimento) {
         const sql = 'INSERT INTO atendimentos SET ?';
-        console.log(novoAtendimento);
         return new Promise((resolve, reject) => {
             connection.query(sql, novoAtendimento, (err, res) => {
                 if(err) {
@@ -31,7 +30,6 @@ class modelAtendimento {
 
     atualizar(atualizarAtendimento, id) {
         const sql = 'UPDATE atendimentos SET ? where id = ?';
-        console.log(atualizarAtendimento);
         return new Promise((resolve, reject) => {
             connection.query(sql, [atualizarAtendimento, id], (err, res) => {
                 if(err) {
