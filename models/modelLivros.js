@@ -1,4 +1,39 @@
-const { Livros } = require("../config/db.js");
+const { sequelize } = require("../config/db.js");
+const { DataTypes } = require('sequelize')
+
+const Livros = sequelize.define("Livros", {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    autor: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    genero: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    ano_de_publicacao: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            isInt: true,
+            min: 1500,
+            max: new Date().getFullYear()
+        }
+    }
+}, {
+    tableName: "livros",
+    timestamps: false
+});
+
 
 class modelLivros {
     listar() {
