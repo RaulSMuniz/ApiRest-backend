@@ -1,18 +1,20 @@
 const express = require("express");
 const app = express();
+const { sequelize } = require("./config/db");
+const rota = require("./routers/rotasLivros");
+
 const port = 3000;
-const router = require("./routers/index.js");
-const connection = require("./infraestrutura/connection.js");
-const tables = require("./infraestrutura/tables.js");
 
-router(app, express);
-tables.init(connection);
+app.use(express.json());
+// Rotas
+app.use(rota);
 
+// Sincroniza tabelas
+sequelize.sync({ alter: true })
+    .then(() => console.log("Tabelas sincronizadas."))
+    .catch((err) => console.log(err.message));
 
-app.listen(port, (error) => {
-    if (error){
-        console.log("Erro.");
-        return;
-    }
-    console.log(`Rodando na porta ${port}.`);
+// Inicia o servidor
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}.`);
 });
