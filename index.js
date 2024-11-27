@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 const { sequelize } = require("./config/db");
-const rota = require("./routers/rotasLivros");
+const rotaLivro = require("./routers/rotasLivros");
+const rotaUser = require("./routers/rotasUsers.js");
 
 const port = 3000;
 
 app.use(express.json());
 // Rotas
-app.use(rota);
+app.use(rotaLivro, rotaUser);
 
 // Sincroniza tabelas
 sequelize.sync({ alter: true })

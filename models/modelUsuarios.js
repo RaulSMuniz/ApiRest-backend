@@ -1,61 +1,61 @@
-const { sequelize } = require("../config/db.js");
-const { DataTypes } = require('sequelize')
+const { sequelize } = require('../config/db.js');
+const { DataTypes } = require('sequelize');
 
-const Livros = sequelize.define("Livros", {
+const Users = sequelize.define('Usuarios', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    titulo: {
+    nome: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    autor: {
-        type: DataTypes.STRING,
+    endereço: {
+        type: DataTypes.STRING(800),
         allowNull: false
     },
-    genero: {
+    email: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    ano_de_publicacao: {
-        type: DataTypes.DATE,
         allowNull: false,
+        unique: true,
         validate: {
-            min: 1500,
-            max: new Date().getFullYear()
+            isEmail: true
         }
+    },
+    telefone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     }
 }, {
-    tableName: "livros",
+    tableName: "usuarios",
     timestamps: false
 });
 
-
-class modelLivros {
+class modelUsuarios {
     listar() {
-        return Livros.findAll().then((res) => res)
+        return Users.findAll().then((res) => res)
         .catch((err) => console.log("Erro: " + err.message));
     };
 
-    criar(novoLivro) {
-        return Livros.create(novoLivro)
+    criar(novoUser) {
+        return Users.create(novoUser)
         .then((res) => res)
         .catch((err) => console.log("Erro: " + err.message));
     };
 
-    atualizar(atualizarLivro, id) {
-        return Livros.update(atualizarLivro, { where: { id }})
+    atualizar(atualizarUser, id) {
+        return Users.update(atualizarUser, { where: { id }})
         .then((res) => res)
         .catch((err) => console.log("Erro: " + err.message));
     };
 
     deletar(id) {
-        return Livros.destroy({ where: { id }})
+        return Users.destroy({ where: { id }})
         .then((res) => res)
         .catch((err) => console.log("Erro: " + err.message));
     };
-};
+}
 
-module.exports = new modelLivros();
+module.exports = new modelUsuarios();
