@@ -1,26 +1,30 @@
-const modelUsers = require('../models/modelUsuarios');
+
+const {modelUsuarios} = require('../models/modelUsuarios');  
 
 class controllerUsers {
+    constructor() {
+        this.model = new modelUsuarios();  
+    }
+
     buscar() {
-        return modelUsers.listar();
+        return this.model.listar();
     };
 
     criar(novoUser) {
-        return modelUsers.criar(novoUser)
+        return this.model.criar(novoUser)
             .then((userCriado) => userCriado)
             .catch((err) => {
                 console.error("Erro ao criar Users:", err.message);
                 throw err;
             });
     };
-    
 
     atualizar(atualizarUser, id) {
-        return modelUsers.atualizar(atualizarUser, id);
+        return this.model.atualizar(atualizarUser, id);
     };
 
     deletar(id) {
-        return modelUsers.deletar(id);
+        return this.model.deletar(id);
     };
 };
 

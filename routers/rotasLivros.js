@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const controllerLivro = require("../controllers/controllerLivros");
+const controllerLivro = require("../controllers/controllerLivros.js");
 
 // GET
 router.get("/livros", (req, res) => {

@@ -1,7 +1,8 @@
+// models/modelUsuarios.js
 const { sequelize } = require('../config/db.js');
 const { DataTypes } = require('sequelize');
 
-const Users = sequelize.define('Usuarios', {
+const Users = sequelize.define('Users', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -12,7 +13,7 @@ const Users = sequelize.define('Usuarios', {
         allowNull: false
     },
     endereço: {
-        type: DataTypes.STRING(800),
+        type: DataTypes.STRING(),
         allowNull: false
     },
     email: {
@@ -26,7 +27,20 @@ const Users = sequelize.define('Usuarios', {
     telefone: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        set(tel) {
+            const telFormatado = tel.replace(/\D/g, '');
+            this.setDataValue('telefone', telFormatado);
+        }
+    },
+    emprestimos_feitos: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        validate: {
+            min: 0,
+            max: 2
+        }
     }
 }, {
     tableName: "usuarios",
@@ -35,27 +49,32 @@ const Users = sequelize.define('Usuarios', {
 
 class modelUsuarios {
     listar() {
-        return Users.findAll().then((res) => res)
-        .catch((err) => console.log("Erro: " + err.message));
-    };
+        return Users.findAll().catch((err) => {
+            console.log("Erro ao listar usuários: " + err.message);
+            throw err;
+        });
+    }
 
     criar(novoUser) {
-        return Users.create(novoUser)
-        .then((res) => res)
-        .catch((err) => console.log("Erro: " + err.message));
-    };
+        return Users.create(novoUser).catch((err) => {
+            console.log("Erro ao criar usuário: " + err.message);
+            throw err;
+        });
+    }
 
     atualizar(atualizarUser, id) {
-        return Users.update(atualizarUser, { where: { id }})
-        .then((res) => res)
-        .catch((err) => console.log("Erro: " + err.message));
-    };
+        return Users.update(atualizarUser, { where: { id } }).catch((err) => {
+            console.log("Erro ao atualizar usuário: " + err.message);
+            throw err;
+        });
+    }
 
     deletar(id) {
-        return Users.destroy({ where: { id }})
-        .then((res) => res)
-        .catch((err) => console.log("Erro: " + err.message));
-    };
+        return Users.destroy({ where: { id } }).catch((err) => {
+            console.log("Erro ao deletar usuário: " + err.message);
+            throw err;
+        });
+    }
 }
 
-module.exports = new modelUsuarios();
+module.exports = { modelUsuarios, Users };
