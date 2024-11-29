@@ -10,26 +10,27 @@ router.get("/emprestimos", (req, res) => {
 
 // POST
 router.post("/emprestimos", (req, res) => {
-        controllerEmprestimos.criar(req, res);  // Deixe o controlador lidar com a resposta
-    
+        controllerEmprestimos.criar(req, res);
 });
 
 
 // PUT
 router.put("/emprestimo/:id", (req, res) => {
-    const { id } = req.params;
-    const atualizarEmprestimos = req.query;
-    controllerEmprestimos.atualizar(atualizarEmprestimos, id)
-        .then((emprestimoAtualizado) => res.status(200).json(emprestimoAtualizado))
-        .catch((err) => res.status(400).json(err.message));
+    const { devolucao } = req.query; 
+
+    if (!devolucao || !['pendente', 'devolvido'].includes(devolucao)) {
+        return res.status(400).json({ erro: "Parâmetros inválidos." });
+    }
+
+    controllerEmprestimos.atualizar(req, res);
 });
+
+
 
 // DELETE
 router.delete("/emprestimo/:id", (req, res) => {
     const { id } = req.params;
-    controllerEmprestimos.deletar(id)
-        .then(() => res.status(200).json({ sucesso: `Emprestimo ${id} removido com sucesso!` }))
-        .catch((err) => res.status(400).json(err.message));
+    controllerEmprestimos.deletar(id);
 });
 
 module.exports = router;
