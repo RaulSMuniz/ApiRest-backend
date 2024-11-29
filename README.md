@@ -21,6 +21,8 @@ bash
 git clone https://github.com/RaulSMuniz/LibraryAPI
 cd LibraryAPI
 npm install
+npm install sequelize
+npm install express
 ```  
 Configure as variáveis de ambiente:
 • No terminal, rode o comando npm install -g nodemon
