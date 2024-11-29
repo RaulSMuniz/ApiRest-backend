@@ -14,6 +14,10 @@ app.use(rotaLivro);
 app.use(rotaUser);
 app.use(rotaEmprestimo);
 
+app.get('/', (req, res) => {
+    res.send('Bem vindo à API da biblioteca!')
+});
+
 // Sincroniza tabelas
 sequelize.sync({ alter: true })
     .then(() => console.log("Tabelas sincronizadas."))
