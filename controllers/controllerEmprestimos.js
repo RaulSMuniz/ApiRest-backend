@@ -19,7 +19,7 @@ class controllerEmprestimos {
 
     criar(req, res) {
         const { idUsuario, idLivro } = req.query;
-        console.log('idUsuario:', idUsuario, 'idLivro:', idLivro);  // Debug
+        console.log('idUsuario:', idUsuario, 'idLivro:', idLivro);
 
         if (!idUsuario || !idLivro) {
             if (!res.headersSent) {
@@ -35,13 +35,13 @@ class controllerEmprestimos {
 
                 return this.model.criar(idUsuario, idLivro)
                     .then(emprestimoCriado => {
-                        console.log('Empréstimo criado:', emprestimoCriado);  // Debug
+                        console.log('Empréstimo criado:', emprestimoCriado);
                         if (!res.headersSent) {
                             return res.status(201).json({ sucesso: "Empréstimo feito com sucesso." });
                         }
                     })
                     .catch(err => {
-                        console.error("Erro ao criar empréstimo: ", err);  // Debug
+                        console.error("Erro ao criar empréstimo: ", err);
                         if (!res.headersSent) {
                             if (err.message === 'Quantidade máxima de empréstimos alcançados.') {
                                 return res.status(400).json({ erro: err.message });
@@ -79,26 +79,9 @@ class controllerEmprestimos {
         }
     }
 
-    async deletar(req, res) {
-        const { id } = req.params;  
-    
-        try {
-            const emprestimoDeletado = await this.model.deletar(id);
-    
-            if (emprestimoDeletado === 0) {
-                return res.status(404).json({ erro: "Empréstimo não encontrado." });
-            }
-    
-            return res.status(200).json({ sucesso: "Empréstimo deletado com sucesso." });
-        } catch (err) {
-            console.error("Erro: " + err.message);
-            return res.status(400).json({ erro: err.message });
-        }
-    }
-    
-    
-    
-
+    deletar(id) {
+        return this.model.deletar(id);
+    };
 
 }
 

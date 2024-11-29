@@ -141,19 +141,35 @@ class modelEmprestimo {
         });
     }
 
-    async deletar(id) {
-        try {
-            const emprestimoDeletado = await Emprestimos.destroy({ where: { id } });
+    deletar(id) {
+        return sequelize.transaction(async (t) => {
+            try {
 
-            if (emprestimoDeletado === 0) {
-                throw new Error('Empréstimo não encontrado.');
-            }
+                const emprestimo = await Emprestimos.findByPk(id, { transaction: t });
     
-            return emprestimoDeletado;
-        } catch (err) {
-            console.error("Erro ao deletar empréstimo: " + err.message);
-            throw err;
-        }
+                if (!emprestimo) {
+                    throw new Error(`Empréstimo com ID ${id} não encontrado.`);
+                }
+
+                if (emprestimo.devolucao === 'pendente') {
+                    const usuario = await Users.findByPk(emprestimo.idUsuario, { transaction: t });
+    
+                    if (usuario) {
+                        await usuario.update(
+                            { emprestimos_feitos: usuario.emprestimos_feitos - 1 },
+                            { transaction: t }
+                        );
+                    }
+                }
+
+                await Emprestimos.destroy({ where: { id } }, { transaction: t });
+    
+                return { sucesso: `Empréstimo ${id} deletado com sucesso.` };
+            } catch (err) {
+                console.error("Erro ao deletar empréstimo: ", err.message);
+                throw err;
+            }
+        });
     }
     
     

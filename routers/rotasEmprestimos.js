@@ -30,7 +30,9 @@ router.put("/emprestimo/:id", (req, res) => {
 // DELETE
 router.delete("/emprestimo/:id", (req, res) => {
     const { id } = req.params;
-    controllerEmprestimos.deletar(id);
+    controllerEmprestimos.deletar(id)
+        .then(() => res.status(200).json({ sucesso: `Empréstimo ${id} deletado com sucesso!` }))
+        .catch((err) => res.status(400).json(err.message));
 });
 
 module.exports = router;
