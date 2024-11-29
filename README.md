@@ -21,8 +21,12 @@ API Restful para gerenciar livros em uma biblioteca.
 git clone https://github.com/nwrafaa/LibraryAPI
 cd LibraryAPI
 npm install
+npm install sequelize 
+npm install express
 ```  
+
 Configure as variáveis de ambiente:
+• No terminal, rode o comando npm install -g nodemon
 • Crie um arquivo .env na raiz do projeto.
 • Após criar o arquivo .env, adicione o seguinte conteúdo, substituindo pelos valores corretos do seu banco de dados:
 
@@ -31,9 +35,9 @@ DB_USER=root
 DB_PASSWORD=1298319823
 DB_NAME=minha_database
 
-Para rodar o projeto no modo de desenvolvimento(com nodemon), utilize o seguinte comando:
+Para iniciar o projeto no modo de desenvolvimento com o **nodemon** use o seguinte comando:
 
-npm run dev
+nodemon
 
 Por padrão, a API estará rodando em: http://localhost:3000 
 
