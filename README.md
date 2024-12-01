@@ -41,3 +41,10 @@ nodemon
 
 Por padrão, a API estará rodando em: http://localhost:3000 
 
+## Fluxo de trabalho no repositório
+
+Abaixo está o fluxograma do fluxo de trabalho utilizado no desenvolvimento do projeto:
+![Fluxo de Trabalho](images/Fluxograma.png)
+
+
+
