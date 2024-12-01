@@ -46,5 +46,12 @@ Por padrão, a API estará rodando em: http://localhost:3000
 Abaixo está o fluxograma do fluxo de trabalho utilizado no desenvolvimento do projeto:
 ![Fluxo de Trabalho](images/Fluxograma.png)
 
+## Estratégia de Branching:
+- **main**: Branch principal (sempre estável e pronta para produção).
+- **dev**: Branch para desenvolvimento principal (onde as novas funcionalidades são integradas).
+- **feature branches** (ex: `feature/cadastro-usuarios`): Branches específicas para funcionalidades. Após o desenvolvimento, são mescladas na **dev**.
+
+Quando o desenvolvimento na **dev** estiver pronto, ela será mesclada na **main**.
+
 
 
