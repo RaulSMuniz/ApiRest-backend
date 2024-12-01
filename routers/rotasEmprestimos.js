@@ -34,5 +34,13 @@ router.delete("/emprestimo/:id", (req, res) => {
         .then(() => res.status(200).json({ sucesso: `Empréstimo ${id} deletado com sucesso!` }))
         .catch((err) => res.status(400).json(err.message));
 });
+//GET
+router.get("/relatorios/top-livros", (req, res) => {  //Get pra livros mais emprestados 
+    controllerEmprestimos.livrosMaisEmprestados(req, res);
+});
+//GET 
+router.get("/relatorios/usuarios-pendentes", (req, res) => { //GET para usuários com pendências 
+    controllerEmprestimos.usuariosComPendencias(req, res);
+});
 
 module.exports = router;

@@ -171,6 +171,25 @@ class modelEmprestimo {
             }
         });
     }
+    async livrosMaisEmprestados() {
+        return sequelize.query(`
+            SELECT livros.id, livros.titulo, COUNT(emprestimos.id) AS total_emprestimos
+            FROM livros
+            JOIN emprestimos ON livros.id = emprestimos.idLivro
+            GROUP BY livros.id
+            ORDER BY total_emprestimos DESC
+            LIMIT 10;
+        `, { type: sequelize.QueryTypes.SELECT });
+    }
+    async usuariosComPendencias() { 
+        return sequelize.query(`
+            SELECT usuarios.id, usuarios.nome, livros.titulo, emprestimos.data_devolucao
+            FROM usuarios
+            JOIN emprestimos ON usuarios.id = emprestimos.idUsuario
+            JOIN livros ON livros.id = emprestimos.idLivro
+            WHERE emprestimos.devolucao = 'pendente';
+        `, { type: sequelize.QueryTypes.SELECT });
+    }
     
     
 
