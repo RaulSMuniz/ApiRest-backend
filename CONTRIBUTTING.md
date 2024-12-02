@@ -44,3 +44,4 @@ Obrigado por contribuir para o nosso projeto! Siga os passos abaixo para colabor
 ## Documentação de Apoio
 
 - [Ferramentas, Bibliotecas e Frameworks](ferramentas_tecnologias.pdf): Documento explicando as tecnologias utilizadas no projeto.
+

@@ -1,5 +1,12 @@
-# LibraryAPI
-API Restful para gerenciar livros em uma biblioteca.
+# Descrição do projeto
+A LibraryAPi é uma aplicação RESTful desenvolvida para gerenciar livros em uma biblioteca.
+O sistema permite realizar operações de CRUD (Create, Read, Update, Delete) para livros, usuários e empréstimos, além de gerar relatórios sobre o uso do sistema.
+
+## Pré-requisitos
+Antes de começar, você precisa ter as seguintes ferramentas instaladas:
+- **Node.js** (v16 - *)
+- **MySQL** (v8 - *)
+- **MySQL Workbench**: Para gerenciamento do banco de dados.
 
 ## Funcionalidades
 - Cadastro de livros.
@@ -60,6 +67,38 @@ Quando o desenvolvimento na **dev** estiver pronto, ela será mesclada na **main
 ## Documentação de Apoio
 
 - [Ferramentas, Bibliotecas e Frameworks](ferramentas_tecnologias.pdf): Documento explicando as tecnologias utilizadas no projeto.
+
+## Autores
+- **Rafael Viana**:  Gerente de configuração
+- **Karollyne Santos**: Scrum Master
+- **João Barros**: Desenvolvedor
+- **Raul Muniz**: Desenvolvedor
+- **André Lopes**: Desenvolvedor
+- **Milena de Oliveira**: Documentadora
+- **Guilherme Andrade**: Documentador
+
+## Licença 
+
+Este projeto está licenciado sob a [Licença Creative Commons CC0 1.0](LICENSE)
+
+## Diagrama de classes
+![Diagrama de classes](images/diagrama_de_classes.png)
+
+## Diagrama ER
+
+![Diagrama ER](images/diagrama_er.png)
+
+# Mapa mental
+
+![Mapa mental](images/mindmap.png)
+
+## Exemplo de resposta JSON da API (uma captura do Thunder Client)
+
+![Exemplo de resposta JSON](images/resposta_json.png)
+
+
+
+
 
 
 
