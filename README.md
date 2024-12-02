@@ -53,5 +53,14 @@ Abaixo está o fluxograma do fluxo de trabalho utilizado no desenvolvimento do p
 
 Quando o desenvolvimento na **dev** estiver pronto, ela será mesclada na **main**.
 
+## Documentação de Apoio
+
+- [Tutorial para Fluxo de Trabalho com Git](fluxo_trabalho.pdf): Explica os comandos Git e o fluxo de trabalho utilizado no projeto.
+
+## Documentação de Apoio
+
+- [Ferramentas, Bibliotecas e Frameworks](ferramentas_tecnologias.pdf): Documento explicando as tecnologias utilizadas no projeto.
+
+
 
 

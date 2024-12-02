@@ -36,3 +36,11 @@ Obrigado por contribuir para o nosso projeto! Siga os passos abaixo para colabor
 - Faça o **fork e clone** do repositório **sempre a partir da branch principal** (`main`).
 - Não envie código que não foi **testado** ou **revisado**.
 - Se assegure de que **todas as dependências** do projeto estejam instaladas corretamente e que o código esteja funcionando em sua máquina local.
+
+## Documentação de Apoio
+
+- [Tutorial para Fluxo de Trabalho com Git](fluxo_trabalho.pdf): Explica os comandos Git e o fluxo de trabalho utilizado no projeto.
+
+## Documentação de Apoio
+
+- [Ferramentas, Bibliotecas e Frameworks](ferramentas_tecnologias.pdf): Documento explicando as tecnologias utilizadas no projeto.
