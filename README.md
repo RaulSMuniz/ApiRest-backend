@@ -1,5 +1,5 @@
 # Descrição do projeto
-A LibraryAPi é uma aplicação RESTful desenvolvida para gerenciar livros em uma biblioteca.
+A LibraryAPI é uma aplicação RESTful desenvolvida para gerenciar livros em uma biblioteca.
 O sistema permite realizar operações de CRUD (Create, Read, Update, Delete) para livros, usuários e empréstimos, além de gerar relatórios sobre o uso do sistema.
 
 ## Pré-requisitos
