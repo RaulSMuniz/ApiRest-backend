@@ -12,7 +12,7 @@ const Users = sequelize.define('Users', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    endereço: {
+    endereco: {
         type: DataTypes.STRING(),
         allowNull: false
     },

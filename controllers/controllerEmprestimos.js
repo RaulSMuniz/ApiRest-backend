@@ -82,6 +82,24 @@ class controllerEmprestimos {
     deletar(id) {
         return this.model.deletar(id);
     };
+    async livrosMaisEmprestados(req, res) {  //Relatório de livros mais emprestados 
+        try {
+            const resultado = await this.model.livrosMaisEmprestados();
+            res.status(200).json(resultado);
+        } catch (err) {
+            console.error("Erro ao gerar relatório de livros mais emprestados:", err.message);
+            res.status(500).json({ error: "Erro interno ao gerar relatório." });
+        }
+    }
+    async usuariosComPendencias(req, res) { //Relatório de emprestimos pendentes
+        try {
+            const resultado = await this.model.usuariosComPendencias();
+            res.status(200).json(resultado);
+        } catch (err) {
+            console.error("Erro ao gerar relatório de usuários com pendências:", err.message);
+            res.status(500).json({ error: "Erro interno ao gerar relatório." });
+        }
+    }
 
 }
 
