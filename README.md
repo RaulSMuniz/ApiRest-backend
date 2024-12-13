@@ -9,17 +9,18 @@ Antes de começar, você precisa ter as seguintes ferramentas instaladas:
 - **MySQL Workbench**: Para gerenciamento do banco de dados.
 
 ## Funcionalidades
-- Cadastro de livros.
-- Registro de usuários.
-- Controle de empréstimos e devoluções.
+- Cadastro de livros;
+- Registro de usuários;
+- Controle de empréstimos e devoluções;
+- Listagem de livros mais emprestados e usuários com devoluções pendentes.
 
 ## Tecnologias e Frameworks utilizados
-- **Node.js**: Ambiente de execução JavaScript
-- **Express.js**: Framework para criar a API.
-- **Sequelize**: ORM para interação com o banco de dados.
-- **MySQL**: Banco de dados relacional utilizado para armazenar as informações.
-- **dotenv**: Para gerenciar variáveis de ambiente de forma segura.
-**Nodemon**: Utilitário para reiniciar automaticamente o servidor durante o desenvolvimento.
+- **Node.js**: Ambiente de execução JavaScript;
+- **Express.js**: Framework para criar a API;
+- **Sequelize**: ORM para interação com o banco de dados;
+- **MySQL**: Banco de dados relacional utilizado para armazenar as informações;
+- **dotenv**: Para gerenciar variáveis de ambiente de forma segura;
+**Nodemon**: Utilitário para reiniciar automaticamente o servidor durante o desenvolvimento;
 - **MySQL Workbench**: Ferramenta gráfica para modelagagem e administração do MySQL
 
 ## Como baixar e configurar o projeto
@@ -54,8 +55,8 @@ Abaixo está o fluxograma do fluxo de trabalho utilizado no desenvolvimento do p
 ![Fluxo de Trabalho](images/Fluxograma.png)
 
 ## Estratégia de Branching:
-- **main**: Branch principal (sempre estável e pronta para produção).
-- **dev**: Branch para desenvolvimento principal (onde as novas funcionalidades são integradas).
+- **main**: Branch principal (sempre estável e pronta para produção);
+- **dev**: Branch para desenvolvimento principal (onde as novas funcionalidades são integradas);
 - **feature branches** (ex: `feature/cadastro-usuarios`): Branches específicas para funcionalidades. Após o desenvolvimento, são mescladas na **dev**.
 
 Quando o desenvolvimento na **dev** estiver pronto, ela será mesclada na **main**.
